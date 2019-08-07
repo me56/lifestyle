@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+    <link rel="shortcut icon" type="image/jpeg" href="https://raw.githubusercontent.com/me56/picture/master/webwxgeticon.jpg">
+    <title>江湖过客</title>
+    <script src="../js/click_image.js"></script>
+
+</head>
+
+<body>
+<main role="main">
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+        <div class="container">
+            <h1 class="display-3">因为喜欢,所以认同</h1>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Example row of columns -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="list-group"></div>
+            </div>
+        </div>
+    </div> <!-- /container -->
+</main>
+
+<footer class="container mt-3">
+    <p class=" border-top  pt-3">&copy; 2019 Welife.fun</p>
+</footer>
+<!--<script>
+    jQuery(document).ready(function () {
+        jQuery.get('reading.txt', function (data) {
+            let reading = data.split('\n');
+            let i, htmlStr = '', subtitle;
+            for (i in reading) {
+                if (!reading[i]) {
+                    continue;
+                }
+                subtitle = reading[i].split('||');
+                htmlStr += '<a href="reading_note.html?target=' + (subtitle[1] ? subtitle[1] : '#') + '" class="list-group-item list-group-item-action"> ' + (subtitle[0] ? subtitle[0] : '') + ' </a>';
+            }
+            jQuery('.list-group').html(htmlStr);
+        });
+    });
+</script>-->
+
+<script>
+    jQuery(document).ready(function () {
+        let o_height = 0, n_height = 0, default_line = 20, step = 10, waiting = false, total_count = 0;
+        f(0, default_line);
+
+        jQuery(window).scroll(function (e) {
+            // console.log(e);
+            console.log(default_line);
+            if (default_line > total_count) {
+                console.log(default_line + '>' + total_count);
+                return false;
+            }else{
+                n_height = jQuery(this).scrollTop();
+                if (n_height > o_height) {
+                    if (waiting) {
+                        console.log('waiting...');
+                    } else {
+                        f(default_line, step);
+                        default_line += step;
+                        setTimeout(function () {
+                            o_height = n_height;
+                        }, 0);
+                    }
+                }
+            }
+        });
+
+        function f(start, end) {
+            waiting = true;
+            jQuery.get('reading.txt', function (data) {
+                let reading = data.split('\n');
+                let i, htmlStr = '', subtitle;
+                for (i in reading) {
+                    if (!reading[i] || i < start) {
+                        continue;
+                    }
+                    total_count += 1;
+                    subtitle = reading[i].split('||');
+                    if (i < start + end) {
+                        htmlStr += '<a href="reading_note.html?target=' + (subtitle[1] ? subtitle[1] : '#') + '" class="list-group-item list-group-item-action"> ' + (subtitle[0] ? subtitle[0] : '') + ' </a>';
+                    } else {
+                        break;
+                    }
+                }
+                jQuery('.list-group').append(htmlStr);
+                waiting = false;
+            });
+        }
+    });
+</script>
+</body>
+</html>

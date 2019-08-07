@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'SourceCodeProRegular';
+    src: url('../font/SourceCodePro-Regular.ttf');
+    url('fontname.woff') format('woff'),
+    url('fontname.ttf') format('truetype'),
+    url('fontname.svg#fontname') format('svg');
+}
+
+/*其中fontName替换为你的字体名称*/
+#randomQuote {
+    font-family: SourceCodeProRegular
+}

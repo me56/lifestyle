@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+    <link rel="shortcut icon" type="image/jpeg" href="https://raw.githubusercontent.com/me56/picture/master/webwxgeticon.jpg">
+    <title>江湖过客</title>
+    <script src="js/click_image.js"></script>
+    <link rel="stylesheet" href="css/font.css">
+</head>
+
+<body>
+<main role="main">
+    <div>
+        <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link active" href="quote/quote.html">Quote</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="reading/reading.html">Reading</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="something/something.html">Something</a>
+            </li>
+        </ul>
+    </div>
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+        <div class="container">
+            <h1 class="display-1">LIVE WITH LESS</h1>
+            <p class="lead">Always believe that something wonderful is about to happen.</p>
+        </div>
+    </div>
+
+    <div class="container" id="randomQuote">
+        <!-- Example row of columns -->
+        Always believe that something wonderful is about to happen.
+    </div> <!-- /container -->
+</main>
+<footer class="container mt-3">
+    <p class=" border-top  pt-3">&copy; 2019 Welife.fun</p>
+</footer>
+</body>
+<script>
+    randomQuote();
+
+    jQuery(window).click(function () {
+        randomQuote();
+    });
+
+    function randomQuote() {
+        jQuery.get('./quote/quote.txt', function (data) {
+            let quotes = data.split('\n');
+            let i, htmlStr = '', total_count = 0;
+            for (i in quotes) {
+                if (!quotes[i]) {
+                    continue;
+                }
+                total_count += 1;
+            }
+            htmlStr = quotes[Math.floor(Math.random() * total_count)];
+            console.log(htmlStr);
+            jQuery('#randomQuote').html(htmlStr);
+        });
+    }
+
+    jQuery.get('./reading/reading.txt', function (data) {
+        console.log(data[1]);
+    });
+    jQuery.get('./something/something.txt', function (data) {
+        console.log(data[1]);
+    });
+</script>
+</html>
