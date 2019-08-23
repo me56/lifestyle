@@ -46,25 +46,6 @@
     <p class=" border-top  pt-3">&copy; 2019 Welife.fun</p>
 </footer>
 <script src="../js/urlParam.js"></script>
-<!--<script>-->
-<!--    jQuery(document).ready(function () {-->
-<!--        let target = getQueryString('target');-->
-<!--        if (target != null && target.toString().length > 1) {-->
-<!--            jQuery.get('./reading_note/' + target + '.txt', function (data) {-->
-<!--                let reading_note = data.split('\n');-->
-<!--                let i, htmlStr = '';-->
-<!--                for (i in reading_note) {-->
-<!--                    if (!reading_note[i]) {-->
-<!--                        continue;-->
-<!--                    }-->
-<!--                    htmlStr += '<p class="text-justify">'+reading_note[i]+'</p>';-->
-<!--                }-->
-<!--                jQuery('#reading_note').html(htmlStr);-->
-<!--            });-->
-<!--        }-->
-<!--    });-->
-<!--</script>-->
-
 <script>
     jQuery(document).ready(function () {
         let o_height = 0, n_height = 0, default_line = 20, step = 10, waiting = false, total_count = 0;

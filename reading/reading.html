@@ -45,23 +45,6 @@
 <footer class="container mt-3">
     <p class=" border-top  pt-3">&copy; 2019 Welife.fun</p>
 </footer>
-<!--<script>
-    jQuery(document).ready(function () {
-        jQuery.get('reading.txt', function (data) {
-            let reading = data.split('\n');
-            let i, htmlStr = '', subtitle;
-            for (i in reading) {
-                if (!reading[i]) {
-                    continue;
-                }
-                subtitle = reading[i].split('||');
-                htmlStr += '<a href="reading_note.html?target=' + (subtitle[1] ? subtitle[1] : '#') + '" class="list-group-item list-group-item-action"> ' + (subtitle[0] ? subtitle[0] : '') + ' </a>';
-            }
-            jQuery('.list-group').html(htmlStr);
-        });
-    });
-</script>-->
-
 <script>
     jQuery(document).ready(function () {
         let o_height = 0, n_height = 0, default_line = 20, step = 10, waiting = false, total_count = 0;
