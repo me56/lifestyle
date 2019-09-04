@@ -1,4 +1,4 @@
 /*其中fontName替换为你的字体名称*/
-* {
+.container {
     font-family: Menlo, Monaco, monospace;
 }
