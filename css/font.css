@@ -1,4 +1,4 @@
 /*其中fontName替换为你的字体名称*/
-main > .list-group {
+main  .list-group {
     font-family: Menlo, Monaco, monospace;
 }
