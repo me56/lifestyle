@@ -43,7 +43,9 @@
     function randomQuote() {
         jQuery.get('./quote/quote.txt', function (data) {
             let quotes = data.split('\n');
+            console.log(quotes);
             let total_rows = quotes[0];
+            console.log(total_rows);
             let index = Math.floor(Math.random() * total_rows);
             index = index === 0 ? 1 : index;
             console.log(index);
