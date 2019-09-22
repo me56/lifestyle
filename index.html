@@ -44,7 +44,10 @@
         jQuery.get('./quote/quote.txt', function (data) {
             let quotes = data.split('\n');
             let total_rows = quotes[0];
-            let htmlStr = quotes[Math.floor(Math.random() * total_rows)];
+            let index = Math.floor(Math.random() * total_rows)
+            index = index === 0 ? 1 : index;
+            console.log(index);
+            let htmlStr = quotes[index];
             console.log(htmlStr);
             jQuery('#randomQuote').html(htmlStr);
         });
