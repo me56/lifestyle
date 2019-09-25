@@ -75,9 +75,9 @@
             waiting = true;
             jQuery.get('quote.txt', function (data) {
                 let quotes = data.split('\n');
+                quotes.shift();
                 let i, htmlStr = '';
                 for (i in quotes) {
-                    i = i === 0 ? 1 : i;
                     if (!quotes[i] || i < start) {
                         continue;
                     }
