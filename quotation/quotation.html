@@ -17,7 +17,7 @@
 <div class="d-flex flex-column flex-md-row align-items-center p-2 px-md-4 bg-white border-bottom box-shadow">
     <h5 class="my-0 mr-md-auto font-weight-normal"><a href="/" style="text-decoration: none;">Welife</a></h5>
     <nav class="my-2 my-md-0 mr-md-3">
-        <a class="p-2 text-dark" href="../quote/quote.html">Quote</a>
+        <a class="p-2 text-dark" href="../quotation/quotation.html">Quotation</a>
         <a class="p-2 text-dark" href="../reading/reading.html">Reading</a>
         <a class="p-2 text-dark" href="../something/something.html">Something</a>
     </nav>
@@ -73,7 +73,7 @@
 
         function f(start, end) {
             waiting = true;
-            jQuery.get('quote.txt', function (data) {
+            jQuery.get('quotation.txt', function (data) {
                 let quotes = data.split('\n');
                 quotes.shift();
                 let i, htmlStr = '';
