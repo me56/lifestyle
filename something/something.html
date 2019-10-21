@@ -77,14 +77,15 @@
             waiting = true;
             jQuery.get('something.txt', function (data) {
                 let something = data.split('\n');
-                let i, htmlStr = '';
+                let i, htmlStr = '', href = '';
                 for (i in something) {
                     if (!something[i] || i < start) {
                         continue;
                     }
                     total_count += 1;
                     if (i < start + end) {
-                        htmlStr += '<li class="list-group-item">' + something[i] + '</li>';
+                        href = something[i].split('||');
+                        htmlStr += '<li class="list-group-item"><a href="' + href[0] + ' target="_blank">' + href[1] + '</a></li>';
                     } else {
                         break;
                     }
