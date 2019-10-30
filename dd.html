@@ -20,20 +20,15 @@
         <a class="p-2 text-dark" href="reading/reading.html">Reading</a>
         <a class="p-2 text-dark" href="something/something.html">Something</a>
     </nav>
-    <!--    <a class="btn btn-outline-primary" href="#">Sign up</a>-->
 </div>
 <main role="main">
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron d-none d-sm-block">
         <div class="container">
-            <h1 class="display-1">LIVE WITH LESS</h1>
-            <p class="lead">Always believe that something wonderful is about to happen.</p>
+            <h1 class="display-1" id="randomQuote">LIVE WITH LESS</h1>
         </div>
     </div>
 
-    <div class="container" id="randomQuote" style="font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;">
-        Always believe that something wonderful is about to happen.
-    </div> <!-- /container -->
 </main>
 <footer class="container mt-3">
     <p class=" border-top  pt-3">&copy; 2019 Welife.fun</p>
@@ -41,9 +36,9 @@
 </body>
 <script>
     function randomQuote() {
-        jQuery.get('./quotation/quotation.txt', function (data) {
+        jQuery.get('./common/daily_diet.txt', function (data) {
             let quotes = data.split('\n');
-            let total_rows = quotes[0];
+            let total_rows = quotes.length;
             let index = Math.floor(Math.random() * total_rows);
             index = index === 0 ? 1 : index;
             let htmlStr = quotes[index];
@@ -56,15 +51,5 @@
     jQuery(window).click(function () {
         randomQuote();
     });
-</script>
-<script>
-    setTimeout(function () {
-        jQuery.get('./reading/reading.txt', function (data) {
-            console.log(data[1]);
-        });
-        jQuery.get('./something/something.txt', function (data) {
-            console.log(data[1]);
-        });
-    }, 3);
 </script>
 </html>
