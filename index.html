@@ -8,6 +8,9 @@
     <meta name="generator" content="Jekyll v3.8.5">
     <title>LIVE WITH LESS</title>
     <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <script>
+        localStorage.removeItem('index');
+    </script>
     <link rel="import" href="header.html" id="head">
     <!-- Custom styles for this template -->
     <link rel="stylesheet" href="/css/starter-template.css">
@@ -23,6 +26,7 @@
     </div>
 </main>
 <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+
 <script>
     function randomQuote() {
         jQuery.get('./quotation/quotation.txt', function (data) {

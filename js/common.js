@@ -1,5 +1,4 @@
 window.onload = function () {
-    localStorage.removeItem('index');
     let ul = document.getElementById('ul');
     let lis = ul.getElementsByTagName('li');
     let i = 0, j = 0, origin_class = '';
