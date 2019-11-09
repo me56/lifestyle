@@ -25,7 +25,6 @@
     jQuery(document).ready(function () {
         let o_height = 0, n_height = 0, default_line = 20, step = 10, waiting = false, total_count = 0;
         f(0, default_line);
-
         jQuery(window).scroll(function (e) {
             // console.log(e);
             console.log(default_line);
@@ -47,7 +46,6 @@
                 }
             }
         });
-
         function f(start, end) {
             waiting = true;
             jQuery.get('reading.txt', function (data) {
@@ -60,7 +58,10 @@
                     total_count += 1;
                     subtitle = reading[i].split('||');
                     if (i < start + end) {
-                        htmlStr += '<p class="lead"><a href="reading_note.html?target=' + (subtitle[1] ? subtitle[1] : '#') + (subtitle[0] ? subtitle[0] : '') + ' </a></p><hr>';
+                        htmlStr += '<p class="lead">' +
+                            '<a href="reading_note.html?target=' + (subtitle[1] ? subtitle[1] : '#') +'">'+ (subtitle[0] ? subtitle[0] : '') +
+                            ' </a>' +
+                            '</p><hr>';
                     } else {
                         break;
                     }
