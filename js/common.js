@@ -2,13 +2,7 @@ window.onload = function () {
     let ul = document.getElementById('ul');
     let lis = ul.getElementsByTagName('li');
     let i = 0, j = 0, origin_class = '';
-    // if (localStorage.getItem('index') !== null) {
-    //     let li_index = localStorage.getItem('index');
-    //     origin_class = lis[li_index].getAttribute('class');
-    //     origin_class = origin_class.replace(' active', '');
-    //     lis[li_index].className = origin_class + ' active';
-    //     return false;
-    // }
+
     let lis_length = lis.length;
     for (i = 0; i < lis_length; i++) {
         lis[i].data_index = i;
@@ -22,5 +16,12 @@ window.onload = function () {
             }
             this.className = origin_class + ' active';
         }
+    }
+    if (localStorage.getItem('index') !== null) {
+        let li_index = localStorage.getItem('index');
+        origin_class = lis[li_index].getAttribute('class');
+        origin_class = origin_class.replace(' active', '');
+        lis[li_index].className = origin_class + ' active';
+        return false;
     }
 }
