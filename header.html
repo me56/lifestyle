@@ -5,9 +5,9 @@
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto" id="ul">
+            <li class="nav-item">
                 <a class="nav-link" href="/quotation/quotation.html">Quotation</a>
             </li>
             <li class="nav-item">
@@ -19,3 +19,21 @@
         </ul>
     </div>
 </nav>
+
+<script>
+    window.onload = function () {
+        let ul = document.getElementById('ul');
+        let lis = ul.getElementsByTagName('li');
+        let i = 0, j = 0, origin_class = '';
+        let lis_length = lis.length;
+        for (i = 0; i < lis_length; i++) {
+            lis[i].onclick = function () {
+                origin_class = this.getAttribute('class');
+                for (j = 0; j < lis_length; j++) {
+                    lis[j].className = origin_class;
+                }
+                this.className = origin_class + ' active';
+            }
+        }
+    }
+</script>
