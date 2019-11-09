@@ -15,6 +15,7 @@ window.onload = function () {
         lis[i].onclick = function () {
             localStorage.setItem('index', this.data_index);
             origin_class = this.getAttribute('class');
+            origin_class = origin_class.replace(' active', '');
             console.log(origin_class);
             for (j = 0; j < lis_length; j++) {
                 lis[j].className = origin_class;
