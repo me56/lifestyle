@@ -17,11 +17,7 @@
 </script>
 <main role="main" class="container">
     <div class="starter-template">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="list-group"></div>
-            </div>
-        </div>
+
     </div>
 </main>
 <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
@@ -64,7 +60,7 @@
                     total_count += 1;
                     subtitle = reading[i].split('||');
                     if (i < start + end) {
-                        htmlStr += '<p class="lead"><a href="reading_note.html?target=' + (subtitle[1] ? subtitle[1] : '#') + '" class="list-group-item list-group-item-action"> ' + (subtitle[0] ? subtitle[0] : '') + ' </a></p>';
+                        htmlStr += '<p class="lead"><a href="reading_note.html?target=' + (subtitle[1] ? subtitle[1] : '#') + '" class="list-group-item list-group-item-action"> ' + (subtitle[0] ? subtitle[0] : '') + ' </a></p><hr>';
                     } else {
                         break;
                     }
