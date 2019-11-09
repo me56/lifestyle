@@ -11,16 +11,15 @@ window.onload = function () {
     }
     let lis_length = lis.length;
     for (i = 0; i < lis_length; i++) {
-        (function (args) {
-            lis[i].onclick = function () {
-                localStorage.setItem('index', args);
-                origin_class = this.getAttribute('class');
-                console.log(origin_class);
-                for (j = 0; j < lis_length; j++) {
-                    lis[j].className = origin_class;
-                }
-                this.className = origin_class + ' active';
+        lis[i].data_index = i;
+        lis[i].onclick = function () {
+            localStorage.setItem('index', this.data_index);
+            origin_class = this.getAttribute('class');
+            console.log(origin_class);
+            for (j = 0; j < lis_length; j++) {
+                lis[j].className = origin_class;
             }
-        })(i)
+            this.className = origin_class + ' active';
+        }
     }
 }
