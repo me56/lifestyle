@@ -29,6 +29,7 @@
         for (i = 0; i < lis_length; i++) {
             lis[i].onclick = function () {
                 origin_class = this.getAttribute('class');
+                console.log(origin_class);
                 for (j = 0; j < lis_length; j++) {
                     lis[j].className = origin_class;
                 }
