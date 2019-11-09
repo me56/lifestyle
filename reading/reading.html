@@ -64,12 +64,12 @@
                     total_count += 1;
                     subtitle = reading[i].split('||');
                     if (i < start + end) {
-                        htmlStr += '<a href="reading_note.html?target=' + (subtitle[1] ? subtitle[1] : '#') + '" class="list-group-item list-group-item-action"> ' + (subtitle[0] ? subtitle[0] : '') + ' </a>';
+                        htmlStr += '<p class="lead"><a href="reading_note.html?target=' + (subtitle[1] ? subtitle[1] : '#') + '" class="list-group-item list-group-item-action"> ' + (subtitle[0] ? subtitle[0] : '') + ' </a></p>';
                     } else {
                         break;
                     }
                 }
-                jQuery('.list-group').append(htmlStr);
+                jQuery('.starter-template').append(htmlStr);
                 waiting = false;
             });
         }

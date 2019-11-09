@@ -16,23 +16,8 @@
 <script>
     document.write(head.import.body.innerHTML)
 </script>
-<main role="main">
-<!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
-        <div class="container d-none d-sm-block">
-            <h1 class="display-1">LIVE WITH LESS</h1>
-            <p class="lead">Always believe that something wonderful is about to happen.</p>
-        </div>
-    </div>
-
-    <div class="container">
-        <!-- Example row of columns -->
-        <div class="row">
-            <div class="col-md-12" id="reading_note">
-                <p class="text-justify"></p>
-            </div>
-        </div>
-    </div> <!-- /container -->
+<main role="main" class="container">
+    <div class="starter-template"></div>
 </main>
 
 <footer class="container mt-3">
@@ -53,7 +38,7 @@
                 if (default_line > total_count) {
                     console.log(default_line + '>' + total_count);
                     return false;
-                }else{
+                } else {
                     n_height = jQuery(this).scrollTop();
                     if (n_height > o_height) {
                         if (waiting) {
@@ -81,12 +66,12 @@
                     }
                     total_count += 1;
                     if (i < start + end) {
-                        htmlStr += '<p class="text-justify">'+reading_note[i]+'</p>';
+                        htmlStr += '<p class="lead">' + reading_note[i] + '</p>';
                     } else {
                         break;
                     }
                 }
-                jQuery('#reading_note').append(htmlStr);
+                jQuery('#starter-template').append(htmlStr);
                 waiting = false;
             });
         }
