@@ -6,23 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
-    <link rel="shortcut icon" type="image/jpeg" href="">
     <title>江湖过客</title>
-    <script src="../js/common.js"></script>
     <link rel="stylesheet" href="../css/font.css">
+    <link rel="import" href="../header.html" id="head">
 </head>
 
 <body>
-<div class="d-flex flex-column flex-md-row align-items-center p-2 px-md-4 bg-white border-bottom box-shadow">
-    <h5 class="my-0 mr-md-auto font-weight-normal"><a href="/" style="text-decoration: none;">Welife</a></h5>
-    <nav class="my-2 my-md-0 mr-md-3">
-        <a class="p-2 text-dark" href="../quotation/quotation.html">Quotation</a>
-        <a class="p-2 text-dark" href="../reading/reading.html">Reading</a>
-        <a class="p-2 text-dark" href="../something/something.html">Something</a>
-    </nav>
-    <!--    <a class="btn btn-outline-primary" href="#">Sign up</a>-->
-</div>
+<script>
+    document.write(head.import.body.innerHTML)
+</script>
 <main role="main">
     <!-- Main jumbotron for a primary marketing message or call to action -->
 <!--    <div class="jumbotron d-none d-sm-block">-->
@@ -45,6 +37,7 @@
 <footer class="container mt-3">
     <p class=" border-top  pt-3">&copy; 2019 Welife.fun</p>
 </footer>
+<script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
 <script>
     jQuery(document).ready(function () {
         let o_height = 0, n_height = 0, default_line = 20, step = 10, waiting = false, total_count = 0;
