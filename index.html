@@ -46,5 +46,13 @@
         randomQuote();
     });
 </script>
+<script>
+    // let screen_width = document.documentElement.clientWidth || document.body.clientWidth;
+    let screen_height = document.documentElement.clientHeight || document.body.clientHeight;
+    let main_area = screen_height - 56 - 25;
+    console.log(screen_height);
+    console.log(main_area);
+    document.getElementsByTagName('main')[0].style.height = main_area;
+</script>
 </body>
 </html>
