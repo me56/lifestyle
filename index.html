@@ -9,49 +9,48 @@
     <title>LIVE WITH LESS</title>
     <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <link rel="shortcut icon" href="/favicon.jpg" type="image/jpeg">
+    <script>
+        localStorage.removeItem('index');
+    </script>
+    <link rel="import" href="header.html" id="head">
     <!-- Custom styles for this template -->
     <link rel="stylesheet" href="/css/starter-template.css">
 </head>
 <body>
-<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<script>
+    document.write(head.import.body.innerHTML);
+</script>
 
-  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-        <div class="dropdown-menu" aria-labelledby="dropdown01">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-    </form>
-  </div>
-</nav>
 <main role="main" class="container" id="main">
     <div class="starter-template">
-        <p class="lead text-center" id="random_quote">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate deserunt dignissimos ipsa suscipit ullam? A alias at aut dignissimos fuga iusto minus natus nemo, pariatur perferendis quia sequi tempora velit!</p>
+        <p class="lead text-center" id="random_quote"></p>
     </div>
 </main>
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
-<script src="https://v4.bootcss.com/docs/4.3/dist/js/bootstrap.bundle.js" ></script>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script>
+    function randomQuote() {
+        jQuery.get('./quotation/quotation.txt', function (data) {
+            let quotes = data.split('\n');
+            let total_rows = quotes[0];
+            let index = Math.floor(Math.random() * total_rows);
+            index = index === 0 ? 1 : index;
+            let htmlStr = quotes[index];
+            jQuery('#random_quote').html(htmlStr);
+        });
+    }
+
+    randomQuote();
+
+    jQuery('#main').click(function () {
+        randomQuote();
+    });
+</script>
+<script>
+    let screen_height = document.documentElement.clientHeight || document.body.clientHeight;
+    let main_area = screen_height - 56 - 25;
+    console.log(screen_height);
+    console.log(main_area);
+    document.getElementById('main').style.height = main_area + 'px';
+</script>
 </body>
 </html>
