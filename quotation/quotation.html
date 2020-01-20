@@ -48,7 +48,7 @@
         function f(start, end) {
             waiting = true;
             jQuery.get('quotation.txt', function (data) {
-                let quotes = data.split('\n');
+                let quotes = data.split('>>>');
                 quotes.shift();
                 let i, htmlStr = '';
                 for (i in quotes) {
