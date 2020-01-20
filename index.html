@@ -35,12 +35,15 @@
 <script>
     function randomQuote() {
         jQuery.get('./quotation/quotation.txt', function (data) {
-            let quotes = data.split('>>>\n');
+            let quotes = data.split('>>>');
             let total_rows = quotes[0];
             let index = Math.floor(Math.random() * total_rows);
             index = index === 0 ? 1 : index;
-            let htmlStr = quotes[index];
-            console.log(htmlStr);
+            let sub_content = quotes[index].trim().split('\n');
+            let j, htmlStr = '';
+            for (j in sub_content) {
+                htmlStr += sub_content[j] + '<br>';
+            }
             jQuery('#random_quote').html(htmlStr);
         });
     }

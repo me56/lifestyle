@@ -15,6 +15,7 @@
 
 <body>
 <script src="/js/header.js"></script>
+
 <main role="main" class="container">
     <div class="starter-template"></div>
 </main>
@@ -44,20 +45,25 @@
                 }
             }
         });
-
         function f(start, end) {
             waiting = true;
             jQuery.get('quotation.txt', function (data) {
-                let quotes = data.split('>>>\n');
+                let quotes = data.split(">>>");
                 quotes.shift();
-                let i, htmlStr = '';
+                console.log(quotes);
+                let i, htmlStr = '', j, sub_content;
                 for (i in quotes) {
                     if (!quotes[i] || i < start) {
                         continue;
                     }
                     total_count += 1;
                     if (i < start + end) {
-                        htmlStr += '<p class="lead">' + quotes[i] + '</p><hr>';
+                        htmlStr += '<p class="lead">';
+                        sub_content = quotes[i].trim().split('\n');
+                        for (j in sub_content) {
+                            htmlStr += sub_content[j] + '<br>';
+                        }
+                        htmlStr += '</p><hr>';
                     } else {
                         break;
                     }
