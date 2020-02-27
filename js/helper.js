@@ -28,6 +28,7 @@ function search_quotation(kw) {
             htmlStr += '</p><hr>';
         }
         console.log(htmlStr);
+        if (!htmlStr) {htmlStr = 'Always belive that something wonderful is about to happen.';}
         jQuery('.starter-template').html(htmlStr);
     });
     localStorage.setItem('searching', 1);
