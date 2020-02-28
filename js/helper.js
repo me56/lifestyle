@@ -28,7 +28,7 @@ function search_quotation(kw) {
             htmlStr += '</p><hr>';
         }
         console.log(htmlStr);
-        if (!htmlStr) {htmlStr = 'Always belive that something wonderful is about to happen.';}
+        if (!htmlStr) {htmlStr = '<p class="lead">Always belive that something wonderful is about to happen.</p><hr>';}
         jQuery('.starter-template').html(htmlStr);
     });
     localStorage.setItem('searching', 1);
