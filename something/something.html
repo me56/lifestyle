@@ -1,20 +1,22 @@
-<!DOCTYPE html>
-<html lang="zh-cn">
-
+<!doctype html>
+<html lang="en" class="h-100">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.6 ">
+    <link rel="canonical" href="https://v4.bootcss.com/docs/examples/sticky-footer-navbar/">
     <title>LIVE WITH LESS</title>
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
     <link rel="shortcut icon" href="/favicon.jpg" type="image/jpeg">
+
     <!-- Custom styles for this template -->
     <link rel="stylesheet" href="/css/starter-template.css">
-    <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
-    <script src="/js/common.js"></script>
 </head>
 
-<body>
+<body class="d-flex flex-column h-100">
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
     <a class="navbar-brand" href="/">Welife</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
@@ -36,22 +38,25 @@
         </ul>
     </div>
 </nav>
-<main role="main" class="container">
-    <div class="starter-template"></div>
+<main role="main" id="main" class="flex-shrink-0">
+    <div class="mt-3"></div>
+    <div class="container" id="something"></div>
 </main>
-<footer class="footer mt-auto py-3 fixed-bottom">
+<footer class="footer mt-auto py-3">
     <div class="container text-center">
-        <span class=""> © 2019-2020 Welife.fun 版权所有 <a href="http://www.beian.miit.gov.cn" target="_blank">京ICP备19027490号</a></span>
+        <span class="text-muted"> © 2019-2020 Welife.fun 版权所有 <a href="http://www.beian.miit.gov.cn" target="_blank">京ICP备19027490号</a></span>
     </div>
 </footer>
+
+<script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
 <script src="https://v4.bootcss.com/docs/4.3/dist/js/bootstrap.bundle.js"></script>
+<script src="/js/common.js"></script>
 <script>
     jQuery(document).ready(function () {
         let o_height = 0, n_height = 0, default_line = 20, step = 10, waiting = false, total_count = 0;
         f(0, default_line);
 
         jQuery(window).scroll(function (e) {
-            // console.log(e);
             console.log(default_line);
             if (default_line > total_count) {
                 console.log(default_line + '>' + total_count);
@@ -75,21 +80,22 @@
         function f(start, end) {
             waiting = true;
             jQuery.get('something.txt', function (data) {
-                let something = data.split('\n');
-                let i, htmlStr = '', href = '';
-                for (i in something) {
-                    if (!something[i] || i < start) {
+                let somethings = data.split('\n');
+                let i, htmlStr = '', url = '', record;
+                for (i in somethings) {
+                    record = somethings[i].trim();
+                    if (!record || i < start) {
                         continue;
                     }
                     total_count += 1;
                     if (i < start + end) {
-                        href = something[i].split('||');
-                        htmlStr += '<p class="lead"><a href="' + href[0] + '" target="_blank">' + href[1] + '</a></p><hr>';
+                        url = record.split('||');
+                        htmlStr += '<article><p class="lead"><a href="' + url[0] + '" target="_blank" class="text-decoration-none">' + url[1] + '</a></p></article><hr>';
                     } else {
                         break;
                     }
                 }
-                jQuery('.starter-template').append(htmlStr);
+                jQuery('#something').append(htmlStr);
                 waiting = false;
             });
         }

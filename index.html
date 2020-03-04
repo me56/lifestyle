@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="h-100">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -9,17 +9,16 @@
     <meta name="generator" content="Jekyll v3.8.6 ">
     <link rel="canonical" href="https://v4.bootcss.com/docs/examples/sticky-footer-navbar/">
     <title>LIVE WITH LESS</title>
-    <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
     <link rel="shortcut icon" href="/favicon.jpg" type="image/jpeg">
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="/css/starter-template.css">
     <script>
         localStorage.removeItem('index');
     </script>
-    <!-- Custom styles for this template -->
-    <link rel="stylesheet" href="/css/starter-template.css">
-    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
-    <script src="/js/common.js"></script>
 </head>
-<body>
+<body class="d-flex flex-column h-100">
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
     <a class="navbar-brand" href="/">Welife</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
@@ -42,33 +41,32 @@
     </div>
 </nav>
 
-<main role="main" class="container" id="main">
-    <div class="starter-template">
-        <p class="lead" id="random_quote"></p>
+<main role="main" id="main" class="flex-shrink-0">
+    <div class="container">
+        <div class="mt-5"></div>
+        <article id="quote"></article>
     </div>
 </main>
 
-<footer class="footer mt-auto py-3 fixed-bottom">
+<footer class="footer mt-auto py-3">
     <div class="container text-center">
-        <span class=""> © 2019-2020 Welife.fun 版权所有 <a href="http://www.beian.miit.gov.cn" target="_blank">京ICP备19027490号</a></span>
+        <span class="text-muted"> © 2019-2020 Welife.fun 版权所有 <a href="http://www.beian.miit.gov.cn" target="_blank">京ICP备19027490号</a></span>
     </div>
 </footer>
-
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/common.js"></script>
 <script src="https://v4.bootcss.com/docs/4.3/dist/js/bootstrap.bundle.js"></script>
 
 <script>
     function randomQuote() {
         jQuery.get('./quotation/quotation.txt', function (data) {
             let quotes = data.split('>>>');
-            let total_rows = quotes[0];
+            let total_rows = quotes[0].trim();
             let index = Math.floor(Math.random() * total_rows);
             index = index === 0 ? 1 : index;
-            let sub_content = quotes[index].trim().split('\n');
-            let j, htmlStr = '';
-            for (j in sub_content) {
-                htmlStr += sub_content[j] + '<br>';
-            }
-            jQuery('#random_quote').html(htmlStr);
+            let htmlStr = '';
+            htmlStr = '<p class="text-monospace text-pre-inline">' + quotes[index].trim() + '</p>';
+            jQuery('#quote').html(htmlStr);
         });
     }
 

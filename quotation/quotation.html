@@ -1,20 +1,22 @@
-<!DOCTYPE html>
-<html lang="zh-cn">
-
+<!doctype html>
+<html lang="en" class="h-100">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.6 ">
+    <link rel="canonical" href="https://v4.bootcss.com/docs/examples/sticky-footer-navbar/">
     <title>LIVE WITH LESS</title>
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
     <link rel="shortcut icon" href="/favicon.jpg" type="image/jpeg">
+
     <!-- Custom styles for this template -->
     <link rel="stylesheet" href="/css/starter-template.css">
-    <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
-    <script src="/js/common.js"></script>
-    <script src="/js/helper.js"></script>
 </head>
 
-<body>
+<body class="d-flex flex-column h-100">
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
     <a class="navbar-brand" href="/">Welife</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
@@ -34,21 +36,30 @@
                 <a class="nav-link" href="/something/something.html">Something</a>
             </li>
         </ul>
-        <form class="form-inline mt-2 mt-md-0" onkeypress="event.preventDefault();search_quotation(document.getElementById('search').value);">
+        <form class="form-inline mt-2 mt-md-0"
+              onkeypress="event.preventDefault();search_quotation(document.getElementById('search').value);">
             <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" id="search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="search_quotation(document.getElementById('search').value);">Search</button>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="button"
+                    onclick="search_quotation(document.getElementById('search').value);">Search
+            </button>
         </form>
     </div>
 </nav>
 
-<main role="main" class="container">
-    <div class="starter-template"></div>
+<main role="main" id="main" class="flex-shrink-0">
+    <div class="mt-5"></div>
+    <div class="container" id="quotation"></div>
 </main>
+
 <footer class="footer mt-auto py-3 fixed-bottom">
     <div class="container text-center">
-        <span class=""> © 2019-2020 Welife.fun 版权所有 <a href="http://www.beian.miit.gov.cn" target="_blank">京ICP备19027490号</a></span>
+        <span class="text-muted"> © 2019-2020 Welife.fun 版权所有 <a href="http://www.beian.miit.gov.cn" target="_blank">京ICP备19027490号</a></span>
     </div>
 </footer>
+
+<script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+<script src="/js/common.js"></script>
+<script src="/js/helper.js"></script>
 <script src="https://v4.bootcss.com/docs/4.3/dist/js/bootstrap.bundle.js"></script>
 <script>
     jQuery(document).ready(function () {
@@ -56,15 +67,11 @@
         let o_height = 0, n_height = 0, default_line = 20, step = 10, waiting = false, total_count = 0;
         f(0, default_line);
 
-        console.log(waiting, ' 1 ', total_count);
-
         jQuery(window).scroll(function (e) {
-            if (localStorage.getItem('searching')){
+            if (localStorage.getItem('searching')) {
                 return false;
             }
-            console.log(default_line);
             if (default_line > total_count) {
-                console.log(default_line + '>' + total_count);
                 return false;
             } else {
                 n_height = jQuery(this).scrollTop();
@@ -88,25 +95,20 @@
             jQuery.get('quotation.txt', function (data) {
                 let quotes = data.split(">>>");
                 quotes.shift();
-                // console.log(quotes);
-                let i, htmlStr = '', j, sub_content;
+                let i = 0, htmlStr = '', quote;
                 for (i in quotes) {
-                    if (!quotes[i] || i < start) {
+                    quote = quotes[i].trim();
+                    if (!quote || i < start) {
                         continue;
                     }
                     total_count += 1;
                     if (i < start + end) {
-                        htmlStr += '<p class="lead">';
-                        sub_content = quotes[i].trim().split('\n');
-                        for (j in sub_content) {
-                            htmlStr += sub_content[j] + '<br>';
-                        }
-                        htmlStr += '</p><hr>';
+                        htmlStr += '<article><p class="text-pre-inline">' + quote + '</p></article><hr>';
                     } else {
                         break;
                     }
                 }
-                jQuery('.starter-template').append(htmlStr);
+                jQuery('#quotation').append(htmlStr);
                 waiting = false;
             });
         }
