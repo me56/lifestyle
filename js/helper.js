@@ -15,23 +15,20 @@ function search_quotation(kw) {
     jQuery.get('quotation.txt', function (data) {
         let quotes = data.split(">>>");
         quotes.shift();
-        let i, htmlStr = '', j, sub_content;
+        let i = 0, htmlStr = '', quote;
         for (i in quotes) {
-            if (quotes[i].search(kw) === -1) {
+            quote = quotes[i].trim();
+            if (quote.search(kw) === -1) {
                 continue;
             }
-            htmlStr += '<p class="lead">';
-            sub_content = quotes[i].trim().split('\n');
-            for (j in sub_content) {
-                htmlStr += sub_content[j] + '<br>';
-            }
-            htmlStr += '</p><hr>';
+
+            htmlStr += '<article><p class="text-monospace text-pre-inline">' + quote + '</p></article><hr>';
+
         }
-        console.log(htmlStr);
         if (!htmlStr) {
-            htmlStr = '<p class="lead">Always belive that something wonderful is about to happen.</p><hr>';
+            htmlStr = '<article><p class="text-monospace text-pre-inline">Always belive that something wonderful is about to happen.</p></article><hr>';
         }
-        jQuery('.starter-template').html(htmlStr);
+        jQuery('#quotation').html(htmlStr);
     });
     localStorage.setItem('searching', 1);
 }
