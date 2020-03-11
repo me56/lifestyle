@@ -8,10 +8,6 @@ main > .container {
     font-size: 1.1rem;
 }
 
-hr {
-    border: 1px solid deeppink;
-}
-
 .footer {
     background-color: #f5f5f5;
 }
