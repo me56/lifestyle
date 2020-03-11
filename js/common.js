@@ -24,4 +24,4 @@ window.onload = function () {
         lis[li_index].className = origin_class + ' active';
         return false;
     }
-}
+};
