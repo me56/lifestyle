@@ -59,8 +59,7 @@
 
 <script>
     function randomQuote() {
-        // jQuery.get('./quotation/quotation.txt', function (data) {
-        jQuery.get('https://gitee.com/live-with-less/resource/raw/master/quotation/quotation.txt', function (data) {
+        jQuery.get('./quotation/quotation.txt', function (data) {
             let quotes = data.split('>>>');
             let total_rows = quotes[0].trim();
             let index = Math.floor(Math.random() * total_rows);
