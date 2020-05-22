@@ -79,7 +79,7 @@
 
         function f(start, end) {
             waiting = true;
-            jQuery.get('something.txt', function (data) {
+            jQuery.get('https://cdn.jsdelivr.net/gh/me56/lifestyle/something/something.txt', function (data) {
                 let somethings = data.split('\n');
                 let i, htmlStr = '', url = '', record;
                 for (i in somethings) {

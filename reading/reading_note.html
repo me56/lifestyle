@@ -84,7 +84,7 @@
 
         function f(start, end) {
             waiting = true;
-            jQuery.get('./reading_note/' + target + '.txt', function (data) {
+            jQuery.get('https://cdn.jsdelivr.net/gh/me56/lifestyle/reading/reading_note/' + target + '.txt', function (data) {
                 let reading_content = data.split('\n');
                 let i = 0, htmlStr = '', content;
                 for (i in reading_content) {

@@ -79,7 +79,7 @@
 
         function f(start, end) {
             waiting = true;
-            jQuery.get('reading.txt', function (data) {
+            jQuery.get('https://cdn.jsdelivr.net/gh/me56/lifestyle/reading/reading.txt', function (data) {
                 let readings = data.split('\n');
                 let i = 0, htmlStr = '', content, subtitle;
                 for (i in readings) {
