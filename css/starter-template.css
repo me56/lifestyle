@@ -1,6 +1,6 @@
 body {
     /*background-image: url("https://www.runoob.com/try/demo_source/paper.gif");*/
-    background-image: url("/paper.png");
+    background-image: url("https://cdn.jsdelivr.net/gh/me56/lifestyle/paper.png");
     background-position: left top;
     background-attachment: fixed;
 }
