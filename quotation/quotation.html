@@ -92,7 +92,7 @@
 
         function f(start, end) {
             waiting = true;
-            jQuery.get('https://cdn.jsdelivr.net/gh/me56/lifestyle/quotation/quotation.txt?v=202005241620', function (data) {
+            jQuery.get('https://cdn.jsdelivr.net/gh/me56/lifestyle/quotation/quotation_202005241620.txt', function (data) {
                 let quotes = data.split(">>>");
                 quotes.shift();
                 let i = 0, htmlStr = '', quote;

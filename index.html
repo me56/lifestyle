@@ -59,7 +59,7 @@
 
 <script>
     function randomQuote() {
-        jQuery.get('https://cdn.jsdelivr.net/gh/me56/lifestyle/quotation/quotation.txt?v=202005241620', function (data) {
+        jQuery.get('https://cdn.jsdelivr.net/gh/me56/lifestyle/quotation/quotation_202005241620.txt', function (data) {
             let quotes = data.split('>>>');
             let total_rows = quotes[0].trim();
             let index = Math.floor(Math.random() * total_rows);
