@@ -12,7 +12,7 @@ function search_quotation(kw) {
     if (!kw.length) {
         return false;
     }
-    jQuery.get('quotation.txt', function (data) {
+    jQuery.get('quotation_202005241620.txt', function (data) {
         let quotes = data.split(">>>");
         quotes.shift();
         let i = 0, htmlStr = '', quote;
